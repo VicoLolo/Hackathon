@@ -16,6 +16,10 @@ def answer_rfq(rfq):
     hist_volume = DalService.get_volumes(rfq.get_sym()).tail(days_histo)
     med_volume = np.median(hist_volume)
 
+    macD = DalService.get_macd(rfq.get_sym(), days_long).tail(1).values[0]
+    rsi = DalService.get_rsi(rfq.get_sym(), days_long).tail(1).values[0]
+    print(rsi)
+
     
 
     previous_close = price_stock_hist.iloc[-1].values[0]
